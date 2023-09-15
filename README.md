@@ -79,3 +79,12 @@ JSON (JavaScript Object Notation) sering digunakan dalam pertukaran data antara 
 - Penggunaan dalam API REST : Banyak layanan web modern yang menggunakan arsitektur REST menggunakan JSON sebagai format data untuk permintaan dan respons. Ini telah menjadi standar de facto dalam pengembangan API web.
 
 JSON efisien, mudah digunakan, dan sangat cocok untuk lingkungan web yang terus berkembang.
+
+Sumber : https://midtrans.com/id/blog/json-format
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+Jawaban : 
+... 
+
+5. Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+
