@@ -90,6 +90,19 @@ Jawaban :
 
 5. Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
 
+![2ab6127b8fd0364fd27ea67c2d36dfc206ea6a3f](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/119769840/e1dfb204-211e-4eb7-8c9e-9aef8bed4e72)
+![09f5eead3fe61ab41875b14fa9394362e6b275ad](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/119769840/3e59d83c-839a-40b1-a731-fc96f8179ebd)
+![56c9c3a409fbcf05857b54e0b921b1274d0b2330](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/119769840/189d394c-3aae-4b7a-beea-087fa8e39c2f)
+![0118afcfab6cea70afae5a66cb8b18abb89e9e18](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/119769840/f11e559a-8528-4462-bd9a-00f5187ba8e5)
+![519f3958f6f86ddeacb6c2b1bee8785e8445185e](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/119769840/87abbd2f-e9b9-4dd7-8721-297268780d96)
+
+![57621e5f9b23a60dac77a39aff5876f53ad7f99a
+![3500601390636b00c810797260e996010be6725e](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/119769840/5fecdf47-a16e-4fc0-bf98-dd082c5ba121)
+](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/11
+![af2fa182c44cc93254ca153076a98835b41b52b3](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/119769840/f8266ccd-a919-4522-8912-46904abd6aa1)
+9769840/ebd83b7e-c5a8-4480-b4cd-dbd5c0ded220)
+![ea15125472166b23567efc152580a5235078179c](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/119769840/52571447-8552-4541-8733-ded17f484c86)
+
 
 
 
