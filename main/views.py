@@ -54,3 +54,14 @@ def show_json_by_id(request, id):
     data = Product.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
+# ##bonus
+# def jumlah_item(request):
+#     products = Product.objects.all()  # Mengambil semua produk
+#     num_products = products.count()    # Menghitung jumlah produk
+
+#     context = {
+#         'products': products,
+#         'num_products': num_products,  # Mengirimkan jumlah produk ke template
+#     }
+
+#     return render(request, 'main.html', context)
