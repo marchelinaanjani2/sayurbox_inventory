@@ -158,6 +158,7 @@ g. Proses Deployment di Adaptable
 Untuk proses deployment, saya melakukan prosedur berdasarkan guideline dari Tutorial 0 dan melakukan setting pada perintah python manage.py migrate && gunicorn sayurbox_inventory.wsgi
 
 2. Bagan yang berisi request client ke web aplikasi berbasis Django: 
+![bagan pbp mvt](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/119769840/76699548-d55d-4efc-b146-a59ef2afeb02)
 
 
 Penjelasan : 
