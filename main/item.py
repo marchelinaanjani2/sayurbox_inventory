@@ -6,7 +6,10 @@ class Product(models.Model):
     date_added = models.DateField(auto_now_add=True)
     price = models.IntegerField()
     amount = models.IntegerField()
-    description = models.TextField()
-  
+    description = models.TextField() 
+    stock = models.IntegerField(default=0)  
+
+    image = models.ImageField(upload_to='product_images/', default='default_image.jpg') 
+
     def __str__(self):
         return self.name

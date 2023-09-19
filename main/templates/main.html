@@ -5,53 +5,99 @@
 <html>
 <head>
     <title>SayurBox Inventory Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        img.product-image {
+            max-width: 100px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        p {
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; text-align: center; background-color: #f5f5f5; padding: 20px;">
+<body>
 
-    <h1 style="color: #333;">SayurBox Inventory Page</h1>
+    <h1>SayurBox Inventory Page</h1>
 
-    <div style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
-        <h5>Name: <span style="color: #007bff;">{{ name }}</span></h5>
-        <p>Category: <strong>{{ category }}</strong></p>
-        <p>Price: <span style="color: #e83e8c;">Rp {{ price }}</span></p>
-        <p>Amount: {{ amount }} pcs</p>
-        <p>Description: {{ description }}</p>
-
-        <img src="{{ image }}" alt="Mangga Harum Manis" style="max-width: 100%; border: 1px solid #ddd; border-radius: 5px; margin-top: 10px;">
-        
-        <!-- <p>Kamu menyimpan {{ num_products }} item pada aplikasi ini.</p>  -->
-    </div>
-
-</body>
-
-<table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-    <tr>
-        <th style="background-color: #f2f2f2; color: #333; border: 1px solid #ddd; padding: 8px; text-align: left;">Name</th>
-        <th style="background-color: #f2f2f2; color: #333; border: 1px solid #ddd; padding: 8px; text-align: left;">Category</th>
-        <th style="background-color: #f2f2f2; color: #333; border: 1px solid #ddd; padding: 8px; text-align: left;">Price</th>
-        <th style="background-color: #f2f2f2; color: #333; border: 1px solid #ddd; padding: 8px; text-align: left;">Amount</th>
-        <th style="background-color: #f2f2f2; color: #333; border: 1px solid #ddd; padding: 8px; text-align: left;">Description</th>
-        <th style="background-color: #f2f2f2; color: #333; border: 1px solid #ddd; padding: 8px; text-align: left;">Date Added</th>
-    </tr>
-
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
-    {% for product in products %}
+    <table>
         <tr>
-            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{product.name}}</td>
-            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{product.category}}</td>
-            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{product.price}}</td>
-            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{product.amount}}</td>
-            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{product.description}}</td>
-            <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">{{product.date_added}}</td>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Description</th>
+            <th>Date Added</th>
         </tr>
-    {% endfor %}
-</table>
 
-<a href="{% url 'main:create_product' %}">
-    <button>
-        Add New Product
-    </button>
-</a>
+        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+        {% for product in products %}
+            <tr>
+                <td><img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image"></td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category }}</td>
+                <td>Rp {{ product.price }}</td>
+                <td>{{ product.amount }} pcs</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.date_added }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Menampilkan Total Stok -->
+    <p>Total Stock: {{ total_stock }} pcs</p>
+
+    <a href="{% url 'main:create_product' %}">
+        <button>
+            Add New Product
+        </button>
+    </a>
+</body>
 </html>
 {% endblock content %}
