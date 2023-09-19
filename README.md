@@ -158,7 +158,8 @@ g. Proses Deployment di Adaptable
 Untuk proses deployment, saya melakukan prosedur berdasarkan guideline dari Tutorial 0 dan melakukan setting pada perintah python manage.py migrate && gunicorn sayurbox_inventory.wsgi
 
 2. Bagan yang berisi request client ke web aplikasi berbasis Django: 
-![bagan pbp](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/119769840/9629d4d0-fe41-4110-aa85-a86812a335eb)
+![bagan pbp mvt](https://github.com/marchelinaanjani2/sayurbox_inventory/assets/119769840/76699548-d55d-4efc-b146-a59ef2afeb02)
+
 
 Penjelasan : 
 Bagan tersebut menggambarkan aliran proses request-response dalam aplikasi web berbasis Django. Proses dimulai dengan interaksi pengguna di browser, yang mengirimkan permintaan HTTP ke server Django melalui URL routing yang telah didefinisikan. Server Django kemudian mengarahkan permintaan ke view yang sesuai, di mana logika aplikasi, interaksi dengan model data, dan rendering template HTML terjadi. Setelah rendering, halaman web HTML yang telah dibuat dikirimkan sebagai respons HTTP kembali ke browser, yang akhirnya menampilkan halaman web yang dihasilkan kepada pengguna.
