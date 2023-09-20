@@ -14,6 +14,9 @@ def show_main(request):
     total_stock = products.aggregate(total_stock=Sum('amount'))['total_stock'] or 0
     context = {
         'products': products,
+        'name': 'Marchelina Anjani S', 
+        'class': 'PBP B',
+        
         'total_stock': total_stock, 
      }
         
