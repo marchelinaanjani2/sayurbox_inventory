@@ -86,7 +86,34 @@ Sumber : https://midtrans.com/id/blog/json-format
 
 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 Jawaban : 
-... 
+Langkah-langkah : 
+
+1. Membuat File forms.py:
+   - Pertama buat file forms.py dalam direktori main.
+   - kemudian definisikan sebuah form dengan menggunakan field yang berasal dari model Product yang telah dideklarasikan dalam file item.py
+
+2. Membuat Fungsi create_product pada filei views.py:
+   - Kedua buat sebuah fungsi baru di file views.py dengan nama fungsi create_product yang akan merender tampilan form dari file forms.py ke dalam template HTML.
+
+3. Membuat File HTML Sebagai Template:
+   - Ketiga buat file HTML yang akan digunakan sebagai template untuk form yang dirender oleh fungsi create_product di langkah sebelumnya.
+
+4. Membuat Button di Halaman Utama:
+   - Keempat, pada halaman utama HTML, saya menambahkan sebuah button atau link yang akan mengarahkan user ke halaman dengan form untuk menambahkan produk.
+
+5. Membuat Fungsi untuk Tampilan HTML/XML/JSON:
+   - Selanjutnya, saya membuat empat fungsi tambahan untuk menampilkan data produk dalam format HTML, XML, JSON, dan juga format khusus per ID. 
+   - Untuk menghasilkan format XML dan JSON, perlu membuat fungsi serializer yang akan mengonversi data dari database ke dalam format yang sesuai.
+
+6. Membuat Fungsi untuk Tampilan XML/JSON per ID:
+   - Keenam, buat fungsi yang serupa dengan langkah sebelumnya untuk tampilan XML dan JSON per ID produk. Namun, perlu menerapkan filter berdasarkan primary key (pk) untuk mengambil data yang sesuai.
+
+7. Routing:
+   - Ketujuh, saya menambahkan URL routing untuk semua fungsi yang telah dibuat pada file urls.py. Ini akan menentukan bagaimana setiap fungsi dapat diakses melalui URL.
+   - Setelah melakukan routing, kita dapat menguji atau melihat setiap fungsi yang telah dibuat dengan mengaksesnya melalui localhost 
+
+
+
 
 5. Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
 

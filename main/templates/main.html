@@ -64,6 +64,11 @@
 
     <h1>SayurBox Inventory Page</h1>
 
+    
+    <!-- Menampilkan Total Stok -->
+    <p>Total Stock: {{ total_stock }} pcs</p>
+
+    
     <table>
         <tr>
             <th>Image</th>
@@ -90,8 +95,6 @@
         {% endfor %}
     </table>
 
-    <!-- Menampilkan Total Stok -->
-    <p>Total Stock: {{ total_stock }} pcs</p>
 
     <a href="{% url 'main:create_product' %}">
         <button>
