@@ -1,9 +1,7 @@
 from django.db import models
 
-class Product(models.Model):
+class Item(models.Model):
     name = models.CharField(max_length=255)
-    # nama = models.CharField(upload_to ='products/', default = 'Marchelina Anjani S')
-    # kelas = models.CharField(upload_to ='products/', default = 'PBP B')
     category = models.CharField(max_length=255)
     date_added = models.DateField(auto_now_add=True)
     price = models.IntegerField()
@@ -15,3 +13,10 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+# class Employee(models.Model):
+#     nama = models.CharField(max_length=255)
+#     umur = models.IntegerField()
+
+#     def __str__(self):
+#         return self.name

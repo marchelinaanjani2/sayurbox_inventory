@@ -3,20 +3,19 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from main.forms import ProductForm
 from django.urls import reverse
-from main.item import Product
+from main.models import Item
 from django.http import HttpResponse
 from django.core import serializers
 from django.db.models import Sum
 
 # Create your views here.
 def show_main(request):
-    products = Product.objects.all()
+    products = Item.objects.all()
     total_stock = products.aggregate(total_stock=Sum('amount'))['total_stock'] or 0
     context = {
         'products': products,
         'name': 'Marchelina Anjani S', 
         'class': 'PBP B',
-        
         'total_stock': total_stock, 
      }
         
@@ -39,17 +38,17 @@ def create_product(request):
 
 
 def show_xml(request):
-    data = Product.objects.all()
+    data = Item.objects.all()
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
 def show_json(request):
-    data = Product.objects.all()
+    data = Item.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def show_xml_by_id(request, id):
-    data = Product.objects.filter(pk=id)
+    data = Item.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
 def show_json_by_id(request, id):
-    data = Product.objects.filter(pk=id)
+    data = Item.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
