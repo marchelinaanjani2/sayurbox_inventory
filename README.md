@@ -1,3 +1,92 @@
+##TUGAS 4
+Nama    : Marchelina Anjani Saputri
+NPM     : 2206082770
+Kelas   : B
+
+Jawab:
+1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+Jawaban:
+Django UserCreationForm adalah kelas form bawaan Django yang digunakan untuk membuat pengguna baru. Form ini memiliki tiga bidang:
+
+username: Nama pengguna yang akan digunakan untuk masuk ke sistem.
+password1: Kata sandi yang akan digunakan untuk masuk ke sistem.
+password2: Konfirmasi kata sandi.
+- Kelebihan Django UserCreationForm:
+a. Mudah digunakan: Form ini memiliki tiga bidang yang cukup untuk membuat pengguna baru.
+b. Validasi yang kuat: Form ini memvalidasi kata sandi untuk memastikan bahwa kata sandi tersebut cukup kuat.
+c. Dukungan untuk model pengguna kustom: Form ini dapat digunakan dengan model pengguna kustom.
+- Kekurangan Django UserCreationForm:
+
+a. Tidak dapat disesuaikan: Form ini tidak dapat disesuaikan dengan mudah.
+b. Hanya dapat digunakan untuk membuat pengguna baru: Form ini tidak dapat digunakan untuk memperbarui pengguna yang sudah ada.
+sumber : https://www.javatpoint.com/django-usercreationform
+
+2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+Jawaban:
+autentikasi merupakan suatu sistem untuk memastikan siapa saja yang berhak masuk untuk menggunakan sistem informasi elektronik. Otentikasi bisa berupa password, kartu akses login, atau biometrik seperti sidik jari, retina, telapak tangan, dan suara. Sedangkan, otorisasi merupakan suatu batasan untuk mengakses bagian menu tertentu pada sistem informasi elektronik, proses ini terjadi setelah proses otentikasi. Yang mana identitas pengguna akan terjamin sebelum daftar akses pengguna dengan mencari entri pada tabel serta database. 
+
+Perbedaan autentikasi dan otorisasi sebagai berikut:
+
+- autentikasi berguna sebagai alat untuk melakukan verifikasi data pengguna dalam memberikan perizinan kepada sistem. Namun dari sisi lain, otorisasi adalah penentuan tentang siapa saja yang harus mengakses apa saja;
+- Proses autentikasi, pengguna yang diverifikasi, sedangkan pada proses otorisasi daftar pada akses penggunalah yang divalidasi, proses ini berbeda antara satu dengan lainnya;
+- Proses pertama adalah autentikasi kemudian yang selanjutnya adalah otorisasi;
+- Pada proses autentikasi identitas seseorang ditentukan dari data menggunakan bantuan ID pengguna serta kata sandi. Sedangkan dalam sistem otorisasilah yang memutuskan hak akses yang dimiliki oleh setiap pengguna.
+
+Autentikasi dan otorisasi penting dalam konsep pemrograman Django karena:
+
+- Untuk melindungi data dan sumber daya dari akses yang tidak sah. Autentikasi dan otorisasi membantu memastikan bahwa hanya pengguna yang sah yang dapat mengakses data dan sumber daya. Hal ini penting untuk melindungi data sensitif, seperti informasi keuangan atau data pribadi.
+- Untuk memastikan bahwa pengguna hanya dapat mengakses data dan sumber daya yang mereka izinkan untuk diakses. Otorisasi membantu mencegah pengguna mengakses data atau sumber daya yang tidak relevan atau berbahaya bagi mereka. Hal ini dapat membantu melindungi pengguna dari diri mereka sendiri, seperti mencegah pengguna menghapus data mereka sendiri yang penting.
+- Untuk mematuhi peraturan. Beberapa peraturan, seperti peraturan perlindungan data, mengharuskan organisasi untuk menerapkan kontrol keamanan yang tepat untuk melindungi data pribadi. Autentikasi dan otorisasi dapat membantu organisasi mematuhi peraturan ini.
+
+sumber: https://diginews.id/apa-perbedaan-antara-otentikasi-dan-otorisasi/
+
+3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+Jawaban:
+Cookie adalah istilah untuk kumpulan informasi yang berisi rekam jejak dan aktivitas ketika menelusuri sebuah website. Secara sederhana pengertian cookies adalah kumpulan data yang diterima komputer dari sebuah situs dan mengirimkan kembali ke situs yang dikunjungi.
+
+- Django menggunakan cookie untuk mengelola data sesi pengguna. Sesi adalah periode waktu di mana pengguna berinteraksi dengan situs web. Selama sesi, Django menyimpan informasi tentang pengguna, seperti nama pengguna, peran, dan pengaturan.
+
+- Django menggunakan cookie untuk menyimpan ID sesi. ID sesi adalah nilai unik yang digunakan Django untuk mengidentifikasi sesi pengguna. ID sesi disimpan di cookie pengguna dan dikirim kembali ke server Django setiap kali pengguna membuat permintaan ke situs web.
+
+Django menggunakan ID sesi untuk:
+
+- Memverifikasi identitas pengguna saat mereka masuk ke sistem.
+- Menentukan apakah pengguna telah masuk ke sistem.
+- Menyimpan data pengguna selama sesi.
+
+Berikut adalah cara Django menggunakan cookie untuk mengelola data sesi pengguna:
+
+a. Saat pengguna masuk ke sistem, Django menghasilkan ID sesi baru.
+b. Django menyimpan ID sesi di cookie pengguna.
+c. Django mengirimkan cookie pengguna kembali ke browser pengguna.
+d. Browser pengguna menyimpan cookie di komputer pengguna.
+e. Setiap kali pengguna membuat permintaan ke situs web, browser pengguna mengirimkan cookie kembali ke server Django.
+f. Django menggunakan ID sesi untuk memverifikasi identitas pengguna dan menentukan apakah pengguna telah masuk ke sistem.
+g. Django menggunakan cookie untuk menyimpan data pengguna selama sesi.
+
+sumber: https://www.cnbcindonesia.com/tech/20220325141305-37-326052/mengenal-apa-itu-cookie-browser-dan-cara-mengelolanya
+
+4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+Jawaban: 
+
+Penggunaan cookie secara default tidak sepenuhnya aman dalam pengembangan web. Ada beberapa risiko potensial yang harus diwaspadai, seperti:
+
+- Kerentanan keamanan: Cookie dapat diretas oleh penyerang untuk mencuri informasi sensitif, seperti kata sandi atau data keuangan.
+- Pelacakan pengguna: Cookie dapat digunakan untuk melacak pengguna di seluruh situs web atau bahkan di seluruh web.
+- Ketidaknyamanan pengguna: Cookie dapat mengganggu pengalaman pengguna, terutama jika cookie tersebut sering digunakan atau berukuran besar.
+
+Untuk mengurangi risiko-risiko ini, pengembang web dapat mengambil langkah-langkah berikut:
+
+- Gunakan cookie secara bijaksana: Hanya gunakan cookie untuk menyimpan informasi yang diperlukan.
+- Enkripsi cookie: Enkripsi cookie dapat membantu melindungi informasi sensitif dari peretasan.
+- Setel cookie dengan benar: Setel cookie dengan nilai yang benar, seperti nama domain dan jalur yang sesuai.
+- Gunakan cookie dengan aman: Hindari menyimpan informasi sensitif di cookie.
+
+sumber: https://appmaster.io/id/blog/peran-cookie-dalam-pengembangan-web
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ##TUGAS 3
 
 Nama    : Marchelina Anjani Saputri

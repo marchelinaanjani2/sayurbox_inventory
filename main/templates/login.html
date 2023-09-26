@@ -1,25 +1,19 @@
-{% extends 'base.html' %}
-
-{% block meta %}
-    <title>Login</title>
-{% endblock meta %}
-
 {% block content %}
 
-<div class = "login">
+<div class="login" style="text-align: center; margin-top: 50px;">
 
-    <h1>Login</h1>
+    <h1 style="font-size: 24px; color: #333;">Login</h1>
 
-    <form method="POST" action="">
+    <form method="POST" action="" style="margin-top: 20px;">
         {% csrf_token %}
-        <table>
+        <table style="margin: 0 auto;">
             <tr>
-                <td>Username: </td>
+                <td style="text-align: right;">Username: </td>
                 <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
             </tr>
                     
             <tr>
-                <td>Password: </td>
+                <td style="text-align: right;">Password: </td>
                 <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
             </tr>
 
@@ -38,7 +32,7 @@
         </ul>
     {% endif %}     
         
-    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+    <p style="margin-top: 20px;">Don't have an account yet? <a href="{% url 'main:register' %}" style="color: #007bff; text-decoration: none;">Register Now</a></p>
 
 </div>
 

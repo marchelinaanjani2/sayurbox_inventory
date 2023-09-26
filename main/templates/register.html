@@ -1,34 +1,30 @@
-{% extends 'base.html' %}
-
-{% block meta %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-{% endblock meta %}
-
-{% block content %}  
-
-<div class = "login">
-    
-    <h1>Register</h1>  
-
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
+</head>
+<body>
+    <div class="login" style="background-color: #f0f0f0; width: 300px; margin: 0 auto; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+        <h1 style="text-align: center;">Register</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <table style="width: 100%;">
+                {{ form.as_table }}
+                <tr>
                     <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
+                    <td style="text-align: center;"><input type="submit" name="submit" value="Daftar" style="background-color: #007bff; color: #fff; padding: 10px 20px; border: none; cursor: pointer;"></td>
+                </tr>
+            </table>
         </form>
-
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-
-</div>  
-
-{% endblock content %}
+        {% if messages %}
+        <ul style="padding-left: 20px;">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
