@@ -16,24 +16,41 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from django.shortcuts import get_object_or_404, redirect
 
 @login_required(login_url='/login')
 # Create your views here.
 def show_main(request):
+    if request.method == 'POST':
+        if 'add_item' in request.POST:
+            item_id = int(request.POST['add_item'])
+            item = get_object_or_404(Item, id=item_id)
+            item.amount += 1
+            item.save()
+        elif 'subtract_item' in request.POST:
+            item_id = int(request.POST['subtract_item'])
+            item = get_object_or_404(Item, id=item_id)
+            if item.amount > 0:
+                item.amount -= 1
+                item.save()
+        elif 'delete_item' in request.POST:
+            item_id = int(request.POST['delete_item'])
+            item = get_object_or_404(Item, id=item_id)
+            item.delete()
+    
     products = Item.objects.filter(user=request.user)
     total_stock = products.aggregate(total_stock=Sum('amount'))['total_stock'] or 0
+    
     context = {
         'products': products,
-        'nama ' : 'Marchelina Anjani S',
+        'nama': 'Marchelina Anjani S',
         'class': 'PBP B',
-        'name': request.user.username, 
-        'total_stock': total_stock, 
+        'name': request.user.username,
+        'total_stock': total_stock,
         'last_login': request.COOKIES['last_login'],
-     }
-        
+    }
+    
     return render(request, "main.html", context)
-
 
 def create_product(request):
     form = ProductForm(request.POST or None)
@@ -49,6 +66,27 @@ def create_product(request):
     context = {'form': form}
     return render(request, "create_product.html", context)
 
+
+# Fungsi untuk menambah amount suatu objek sebanyak satu
+def add_item(request, item_id):
+    item = get_object_or_404(Item, id=item_id)
+    item.amount += 1
+    item.save()
+    return redirect('main:show_main')
+
+# Fungsi untuk mengurangi jumlah stok suatu objek sebanyak satu
+def subtract_item(request, item_id):
+    item = get_object_or_404(Item, id=item_id)
+    if item.amount > 0:
+        item.amount -= 1
+        item.save()
+    return redirect('main:show_main')
+
+# Fungsi untuk menghapus suatu objek dari inventori
+def delete_item(request, item_id):
+    item = get_object_or_404(Item, id=item_id)
+    item.delete()
+    return redirect('main:show_main')
 
 def show_xml(request):
     data = Item.objects.all()
