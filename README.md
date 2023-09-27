@@ -85,7 +85,37 @@ Untuk mengurangi risiko-risiko ini, pengembang web dapat mengambil langkah-langk
 sumber: https://appmaster.io/id/blog/peran-cookie-dalam-pengembangan-web
 
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+1. Membuat Fungsi Register
+Pertama buat fungsi baru di views.py dengan nama `register`.Kemudian render Fungsi tersebut pada sebuah file template html.
+        
+2. Membuat Fungsi Login
+Setelah fungsi 'register' di render pada template html. Selanjutnya buat fungsi baru di views.py dengan nama `login_user'. Kemudian render Fungsi tersebut pada sebuah file template html 
+     
+3. Membuat Fungsi Logout
+Selanjutnya membuat fungsi baru di views.py dengan nama `logout_user`. Kemudian render Fungsi tersebut pada sebuah file template html 
+          
+4. Menghubungkan product dengan user
+Setelah membuat semua fungsi di atas, tambahkan URL path untuk setiap fungsi di urls.py:. Kita perlu menghubungkan model dengan user (dalam konteks ini models dengan nama Item) . Untuk menghubungkan model dengan user kita harus menambahkan model baru bernama user menggunakan foreign key  
+ python
+        user = models.ForeignKey(User, on_delete=models.CASCADE)
+     
+Setelah itu lakukan filter terhadap products pada views.py untuk memfilter product yang muncul pada aplikasi sesuai dengan user yang melakukan login   
+ python
+        products = Item.objects.filter(user=request.user)
+     
+5.  Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di local.
+Buat dua akun pengguna di page register terlebih dahulu. Kemudian buat tiga dummy data untuk masing-masing akun pengguna, Data akan tersimpan di database local.
 
+6. Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last_login pada halaman utama aplikasi.
+Untuk menampilkan informasi pengguna, kita perlu menambahkan sebuah fungsi untuk menambah cookie pada login_user ketika kondisi tidak none
+     
+python
+     response.set_cookie('last_login', str(datetime.datetime.now()))
+     
+Selanjutnya tambahkan context baru di fungsi show main untuk melihat data last_login pada template main.html
+
+Terakhir lakukan migrasi
+ 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ##TUGAS 3
 
