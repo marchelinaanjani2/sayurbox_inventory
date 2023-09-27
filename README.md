@@ -115,7 +115,25 @@ python
 Selanjutnya tambahkan context baru di fungsi show main untuk melihat data last_login pada template main.html
 
 Terakhir lakukan migrasi
- 
+
+
+//Pengimplementasian bonus
+- Menambahkan Fungsi add_item:
+
+1. Membuat fungsi add_item dalam views.py untuk menangani tindakan "Tambah" item.
+2. Selanjutnya, dalam fungsi tersebut, akan diambil objek produk berdasarkan ID yang diberikan.
+3. Jika ditekan button 'Tambah' , maka akan ditambahkan satu ke jumlah stok produk dan simpan perubahan tersebut di database.
+4. Kemudia user akan diredirect kembali ke halaman utama (show_main) setelah tindakan selesai.
+
+2. Membuat fungsi subtract_item:
+Mirip dengan tindakan yg dilakukan pada fungsi add_item, yg membedakan hanyalah jika button "kurangi" ditekan maka akan mengurangi item sebanyak 1.
+
+3. Membuat fungsi delete_item dalam views.py untuk menangani tindakan "Hapus" item.
+Mirip dengan tindakan yg dilakukan pada fungsi add_item dan substract_item, yg membedakan hanyalah jika button "Hapus" ditekan maka akan Menghapus item secara keseluruhan dari database.
+
+Setelah fungsi-fungsi ini didefinisikan, kemudian akan ditambahkan URL pattern yang sesuai untuk masing-masing fungsi di dalam file urls.py. Selanjutnya, dalam template HTML, ditambahkan juga  tombol "Tambah," "Kurangi," dan "Hapus" dengan tautan ke URL yang sesuai dengan menggunakan ID produk sebagai parameter.
+
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ##TUGAS 3
 
