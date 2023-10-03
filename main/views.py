@@ -18,6 +18,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import get_object_or_404, redirect
 
+
 @login_required(login_url='/login')
 # Create your views here.
 def show_main(request):

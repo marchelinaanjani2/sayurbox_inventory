@@ -1,39 +1,160 @@
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<div class="login" style="text-align: center; margin-top: 50px;">
+        /* Typography and General Styles */
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background: #86af49;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-    <h1 style="font-size: 24px; color: #333;">Login</h1>
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+        }
 
-    <form method="POST" action="" style="margin-top: 20px;">
-        {% csrf_token %}
-        <table style="margin: 0 auto;">
-            <tr>
-                <td style="text-align: right;">Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td style="text-align: right;">Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+        .login {
+            width: 400px;
+            padding: 20px;
+        }
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
+        .right img {
+            width: 100%;
+            height: auto;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
 
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    <p style="margin-top: 20px;">Don't have an account yet? <a href="{% url 'main:register' %}" style="color: #007bff; text-decoration: none;">Register Now</a></p>
+        /* Form Styles */
+        form {
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            text-align: center;
+        }
 
-</div>
+        h1 {
+            margin: 20px;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #333;
+        }
 
-{% endblock content %}
+        hr {
+            border-top: 2px solid #405d27;
+        }
+
+        p {
+            text-align: center;
+            margin: 10px;
+        }
+
+        form label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 5px;
+            text-align: left; /* Perbarui tata letak label */
+        }
+
+        input {
+            width: 100%;
+            margin: 10px 0;
+            border: none;
+            outline: none;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            padding: 10px;
+            width: 100%;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+            background: #86af49;
+            transition: background 0.3s ease; /* Tambahkan efek transisi hover */
+        }
+
+        button:hover {
+            background:  #3e4444;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 880px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .right img {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login">
+            <h1>Login</h1>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>Username: </td>
+                        <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Password: </td>
+                        <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td><input class="btn login_btn" type="submit" value="Login"></td>
+                    </tr>
+                </table>
+            </form>
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <p>Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a></p>
+        </div>
+        <div class="right">
+            <img src="https://img.lovepik.com/freevector/33/47/00/87Q58PICg2u4Kxfa5bM9c_PIC2018.jpg!vdetail650/quality/90" alt="">
+        </div>
+    </div>
+</body>
+</html>
