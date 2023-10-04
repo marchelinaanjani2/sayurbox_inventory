@@ -117,6 +117,16 @@ sumber:https://codepolitan.com/blog/perbedaan-bootstrap-dan-tailwind
 
 5. elaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 Jawaban: 
+
+1. Penggunaan Bootstrap: saya menambahkan framework Bootstrap untuk semua halaman pada aplikasi saya dengan menambahkannya pada file `base.html`.
+
+2. Penyesuaian Tampilan Konten: Saya juga melakukan penyesuaian pada tampilan konten di setiap halaman (login, register , main) agar terlihat lebih estetis dan nyaman dipandang. Saya menambahkan padding untuk setiap elemen konten.
+
+3. Pengaturan bentuk Tabel: Selanjutnya, saya mengatur background dari card untuktabel di halaman `main.html` dengan menambahkan atribut pada tag style.
+
+4. Pembuatan Navbar: Terakhir, saya membuat navbar untuk setiap halaman agar pengguna dapat dengan mudah navigasi antara halaman-halaman dalam aplikasi saya.
+
+
 -------------------------------------------------------------------------------------------------------------------------------------------------
 ##TUGAS 4
 Nama    : Marchelina Anjani Saputri
