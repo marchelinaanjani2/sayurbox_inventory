@@ -1,9 +1,4 @@
-{% extends 'base.html' %} 
-
-{% block content %}
-<h1>Add New Product</h1>
-
-<form method="POST">
+<form method="POST" action="{% url 'main:create_product' %}">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
@@ -16,4 +11,32 @@
     </table>
 </form>
 
-{% endblock %}
+
+<!-- <form id="product-form" method="POST" action="% url 'main:add_product_ajax' %">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <!-- <button type="button" id="add_product_ajax">Add Product by Ajax</button> -->
+    <!-- <input type="submit" value="Add Product by AJAX"/>
+</form> -->
+
+
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+    $("#add_product_ajax").on("click", function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: "{% url 'main:add_product_ajax' %}",
+            type: "POST",
+            data: $("#product-form").serialize(),
+            success: function (data) {
+                // Handle success, misalnya, tampilkan pesan sukses atau refresh tampilan produk.
+                refreshProducts(); // Fungsi untuk memperbarui tampilan produk.
+            },
+            error: function (data) {
+                // Handle error, misalnya, tampilkan pesan error.
+            },
+        });
+    });
+});
+</script>  -->

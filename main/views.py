@@ -17,6 +17,10 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import get_object_or_404, redirect
+from django.views.decorators.csrf import csrf_exempt 
+from django.http import JsonResponse
+
+
 
 
 @login_required(login_url='/login')
@@ -48,7 +52,7 @@ def show_main(request):
         'class': 'PBP B',
         'name': request.user.username,
         'total_stock': total_stock,
-        'last_login': request.COOKIES['last_login'],
+        # 'last_login': request.COOKIES['last_login'],
     }
     
     return render(request, "main.html", context)
@@ -136,7 +140,28 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('main:login'))
-    response.delete_cookie('last_login')
+    # response.delete_cookie('last_login')
     return response
 
+def get_product_json(request):
+    product_item = Item.objects.all()
+    return HttpResponse(serializers.serialize('json', product_item))
+
+
+@csrf_exempt
+def add_product_ajax(request):
+    if  request.method == 'POST':
+        name = request.POST.get("name")
+        category = request.POST.get("category")
+        price = request.POST.get("price")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        user = request.user 
+        try:
+            new_product = Item.objects.create(name=name, category=category, price=price, amount=amount, description=description, user=user)
+            return JsonResponse({'success': True, 'message': 'Product added successfully'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': 'Error: ' + str(e)}, status=500)
+    
+    return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=405)
 

@@ -36,18 +36,16 @@
         }
 
         .card {
-        width: 300px;
-        border: 1px solid #ddd;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190621/ourmid/pngtree-fresh-vegetables-find-us-vegetables-promotional-poster-image_193164.jpg');
-        margin: 20px;
-        display: inline-block;
-        vertical-align: top;
-        background-size: cover;
-        background-position: center center; 
-
-    }
-
+            width: 300px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190621/ourmid/pngtree-fresh-vegetables-find-us-vegetables-promotional-poster-image_193164.jpg');
+            margin: 20px;
+            display: inline-block;
+            vertical-align: top;
+            background-size: cover;
+            background-position: center center; 
+        }
 
         .card img.product-image {
             max-width: 100px;
@@ -71,13 +69,58 @@
 
         .card button:hover {
             background-color: #588c7e;
+        }
 
-        
+        /* Styles for the pop-up form */
+        #close {
+            display: none; /* Hide the pop-up form by default */
+            background-color: rgba(80, 111, 88, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        @media (min-width: 768px) {
+            .container-popup {
+                width: 30%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container-popup {
+                width: 30%;
+            }
+        }
+
+        .container-popup {
+            position: relative;
+            margin: 5% auto;
+            padding: 4px 3px;
+            background-color: #e1fff5;
+            color: #333;
+            border-radius: 8px;
+        }
+
+        .container-popup img {
+            width: 100%;
+        }
+
+        .close {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            background-color: #33898B;
+            padding: 7px 10px;
+            font-size: 15px;
+            text-decoration: none;
+            line-height: 1;
+            color: #fff;
         }
     </style>
 </head>
 <body>
-
     <!-- Navbar -->
     <div class="navbar">
         <a href="#">Home</a>
@@ -93,13 +136,15 @@
     <!-- Menampilkan Total Stok -->
     <p>Total Stock: {{ total_stock }} pcs</p>
 
+    <!-- Tabel produk akan ditampilkan di sini -->
+    <!-- Produk akan ditampilkan dengan loop melalui data produk -->
     {% for product in products %}
-    <div class="card">
+    <div class="card" id="product_{{ product.id }}">
         <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
         <p>Name: {{ product.name }}</p>
         <p>Category: {{ product.category }}</p>
         <p>Price: Rp {{ product.price }}</p>
-        <p>Stock: {{ product.amount }} pcs</p>
+        <p>Stock: <span id="stock_{{ product.id }}">{{ product.amount }} pcs</span></p>
         <p>Description: {{ product.description }}</p>
         <p>Date Added: {{ product.date_added }}</p>
         <form method="POST" action="{% url 'main:add_item' product.id %}">
@@ -124,6 +169,46 @@
             Add New Product
         </button>
     </a>
+
+
+
+    <!-- Button to show the pop-up form -->
+    <button type="button" class="btn btn-primary" onclick="showPopupForm()">
+        Add New Product by AJAX
+    </button>
+
+    <!-- Pop-up form for AJAX -->
+    <div id="close">
+        <div class="container-popup">
+            <form id="ajax-form" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="name" class="col-form-label">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="col-form-label">Category:</label>
+                    <input type="text" class="form-control" id="category" name="category">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="col-form-label">Price:</label>
+                    <input type="number" class="form-control" id="price" name="price">
+                </div>
+                <div class="mb-3">
+                    <label for="amount" class="col-form-label">Amount:</label>
+                    <input type="number" class="form-control" id="amount" name="amount">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="col-form-label">Description:</label>
+                    <textarea class="form-control" id="description" name="description"></textarea>
+                </div>
+                <button type="button" id="button_add" onclick="addProduct()">Add Product by AJAX</button>
+                <button type="button" class="close" onclick="closePopupForm()">Close</button>
+            </form>
+        </div>
+    </div>
+
+
     <!-- Tombol Logout -->
     <a href="{% url 'main:logout' %}">
         <button>
@@ -131,11 +216,89 @@
         </button>
     </a>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <script>
+        async function getProducts() {
+            return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+        }
+        
+        async function refreshProducts() {
+            const productContainer = document.getElementById("product_container");
+            const products = await getProducts();
 
-    <!-- Link Gambar
-    <a href="#">
-        <img src="link_gambar_anda.jpg" alt="Deskripsi Gambar">
-    </a> -->
+            // Buat sebuah wadah (container) baru untuk semua elemen produk
+            const productElements = document.createElement("div");
+
+            products.forEach((item) => {
+                const productId = `product_${item.id}`;
+                const existingProduct = document.getElementById(productId);
+
+                if (!existingProduct) {
+                    const cardDiv = document.createElement("div");
+                    cardDiv.classList.add("card");
+                    cardDiv.id = productId;
+
+                    const cardImage = document.createElement("img");
+                    cardImage.src = item.fields.image.url;
+                    cardImage.alt = item.fields.name;
+                    cardImage.classList.add("product-image");
+                    cardDiv.appendChild(cardImage);
+
+                    const cardName = document.createElement("p");
+                    cardName.innerText = `Name: ${item.fields.name}`;
+                    cardDiv.appendChild(cardName);
+
+                    const cardPrice = document.createElement("p");
+                    cardPrice.innerText = `Price: Rp ${item.fields.price}`;
+                    cardDiv.appendChild(cardPrice);
+
+                    const cardDescription = document.createElement("p");
+                    cardDescription.innerText = `Description: ${item.fields.description}`;
+                    cardDiv.appendChild(cardDescription);
+
+                    const cardDateAdded = document.createElement("p");
+                    cardDateAdded.innerText = `Date Added: ${item.fields.date_added}`;
+                    cardDiv.appendChild(cardDateAdded);
+
+                    // Tambahkan elemen produk ke wadah produk
+                    productElements.appendChild(cardDiv);
+                }
+            });
+
+            // Ganti semua elemen produk dalam container dengan wadah produk yang baru
+            productContainer.innerHTML = "";
+            productContainer.appendChild(productElements);
+        }
+
+        function addProduct() {
+            fetch("{% url 'main:add_product_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#ajax-form'))
+            })
+            .then(response => response.json())  
+            .then(data => {
+                refreshProducts();  
+                document.getElementById("ajax-form").reset();
+                closePopupForm();
+            })
+            .catch(error => {
+                console.error("Error adding a new product:", error);
+            });
+
+            return false;
+        }
+
+        function showPopupForm() {
+            document.getElementById("close").style.display = "block";
+        }
+
+        function closePopupForm() {
+            document.getElementById("close").style.display = "none";
+        }
+        refreshProducts()
+    </script>
+
 
 </body>
 </html>

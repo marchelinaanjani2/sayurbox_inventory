@@ -1,3 +1,120 @@
+##TUGAS 6
+
+Jawab:
+1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+Jawaban:
+Asynchronous adalah komunikasi secara tertunda (tidak langsung), dalam pemrograman komputer mengacu pada terjadinya peristiwa independen dari aliran program utama dan cara untuk menangani peristiwa tersebut. Singkatnya Asynchronous merupakan proses jalannya program bisa dilakukan secara bersamaan tanpa harus menunggu proses antrian. Synchronous adalah komunikasi secara langsung (satu waktu eksekusi), dalam pemrograman komputer mengacu pada proses jalannya program secara sequential, disini yang dimaksud sequential ada berdasarkan antrian ekseskusi program.
+Perbedaan Asynchronous dengan Synchrounous
+Fitur	        | Asynchronous programming    | 	Synchronous programming
+Cara kerja	  | Tugas-tugas dijalankan      |Tugas-tugas dijalankan
+              | secara paralel	           |secara beruturan
+Kinerja	     |Dapat meningkatkan kinerja	  |Dapat memperlambat kinerja
+Responsivitas |Dapat meningkatkan           |Dapat mengurangi 
+              |responsivitas	              |responsivitas
+Kemudahan     |Dapat lebih sulit digunakan  |Dapat lebih mudah digunakan
+
+Sumber:https://wandercom.id/read/kenali-perbedaan-asynchronous-dan-synchronous-di-pemrograman/
+
+
+2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+Jawab : 
+Paradigma pemrograman berbasis peristiwa (event-driven programming) adalah pendekatan pemrograman di mana eksekusi program terutama ditentukan oleh peristiwa atau tindakan yang terjadi, seperti interaksi pengguna dengan elemen-elemen antarmuka pengguna (UI). Di bawah paradigma ini, program berfungsi untuk merespons peristiwa yang dipancarkan oleh pengguna atau sistem, daripada berjalan secara linier dari awal hingga akhir.
+
+Dalam konteks tugas ini, salah satu contoh penerapan paradigma pemrograman berbasis peristiwa adalah saat menggunakan JavaScript dan AJAX untuk menambahkan produk baru ke daftar produk. Berikut adalah bagaimana paradigma berbasis peristiwa diterapkan dalam tugas ini:
+1. Tindakan Pengguna Sebagai Peristiwa: Ketika pengguna mengklik tombol "Add New Product by AJAX", peristiwa klik ini memicu pemanggilan fungsi JavaScript `showPopupForm()`. Ini adalah contoh dari tindakan pengguna yang memicu peristiwa.
+2. Peristiwa HTTP (AJAX Request): Ketika membuat permintaan AJAX dengan `fetch()` untuk menambahkan produk baru ke server, itu juga adalah peristiwa. Program mengawasi peristiwa ini dan menentukan tindakan apa yang harus diambil saat peristiwa ini terjadi.
+3. Penanganan Peristiwa: Ketika respons dari permintaan AJAX diterima, peristiwa ini mengarah ke pemanggilan fungsi `addProduct()`. Di dalam fungsi ini, akan menangani respons yang diterima dan memutuskan apa yang harus dilakukan selanjutnya, seperti memperbarui daftar produk.
+
+Dengan paradigma berbasis peristiwa, kita dapat merancang aplikasi  agar merespons tindakan dan peristiwa yang terjadi, membuatnya lebih interaktif dan responsif terhadap tindakan pengguna. Ini adalah pendekatan yang umum dalam pengembangan aplikasi web modern dan aplikasi berbasis antarmuka pengguna (UI).
+
+3. Jelaskan penerapan asynchronous programming pada AJAX.
+Jawab : 
+Penerapan asynchronous programming (pemrograman asinkron) sangat penting dalam AJAX (Asynchronous JavaScript and XML). AJAX adalah teknik yang digunakan untuk mengirim permintaan dan menerima data dari server tanpa perlu me-refresh halaman web. Berikut adalah penjelasan tentang penerapan asynchronous programming dalam AJAX:
+- Kegiatan I/O yang Tidak Blocking: Saat sebuah permintaan AJAX dikirim ke server, permintaan tersebut akan dijalankan secara asinkron. Artinya, peramban web tidak akan terjebak menunggu tanggapan dari server. Ini memungkinkan peramban untuk menjalankan tugas-tugas lain dan menjaga responsivitas.
+- Callback Functions: Saat Anda menginisiasi permintaan AJAX, Anda menentukan fungsi callback yang akan dipanggil ketika tanggapan dari server tiba. Callback function ini akan dijalankan setelah permintaan selesai.
+- Promises and async/await: Di JavaScript modern, Anda juga dapat menggunakan Promises dan async/await untuk mengelola permintaan AJAX. Ini memungkinkan Anda untuk menangani sekuensialitas atau paralelitas permintaan dengan lebih mudah, terutama ketika Anda memiliki beberapa permintaan yang saling tergantung.
+- Timeout Handling: Asynchronous programming memungkinkan Anda menentukan waktu maksimum menunggu untuk permintaan dan menangani kasus timeout. Ini memastikan bahwa aplikasi tidak menggantung tanpa batas saat menunggu tanggapan dari server.
+Sumber: https://www.niagahoster.co.id/blog/ajax-javascript/
+
+4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+Jawab :
+Penerapan AJAX menggunakan Fetch API dan jQuery memiliki kelebihan dan kelemahan masing-masing. Teknologi yang lebih baik untuk digunakan tergantung pada kebutuhan dan preferensi pengembang. Berikut perbandingan antara Fetch API dan jQuery untuk penerapan AJAX:
+## Fetch API
+1. Modern dan Native: Fetch API adalah bagian dari standar ECMAScript, sehingga tersedia secara native di peramban web modern. Tidak perlu mengunduh atau memasang pustaka tambahan.
+2. Promises: Fetch API mengembalikan objek Promise, yang memudahkan penanganan permintaan asinkron dengan `then()` dan `async/await`. Ini membuat kode lebih mudah dibaca dan lebih terstruktur.
+3. Fleksibilitas: Fetch API memberikan kontrol yang lebih besar atas permintaan dan respons. Anda dapat mengkonfigurasi permintaan dengan lebih detail dan memproses respons sesuai kebutuhan.
+4. Moduler: Kita dapat menggabungkan Fetch API dengan modul-modul lain seperti `FormData` dan `Headers` untuk mengelola data dan header permintaan.
+
+## jQuery
+1. Cross-Browser Compatibility: jQuery dibangun dengan tujuan untuk menangani perbedaan antara peramban, sehingga kita tidak perlu khawatir tentang perbedaan implementasi di berbagai peramban. Ini dapat menjadi keuntungan saat bekerja dengan peramban yang lebih tua.
+2. Simplicity: jQuery memiliki sintaks yang lebih singkat dan mudah dipahami. Ini cocok untuk kasus-kasus sederhana di mana kita ingin melakukan permintaan AJAX dasar dengan cepat.
+3. Plugin Ecosystem: jQuery memiliki ekosistem plugin yang kuat yang memungkinkan kita menambahkan fungsionalitas tambahan dengan mudah. Terdapat banyak plugin AJAX khusus yang tersedia.
+
+## Pendapat Saya:
+Pilihan antara Fetch API dan jQuery sangat tergantung pada kebutuhan proyek dan preferensi masing-masing. Jika bekerja pada proyek web modern, menggunakan Fetch API adalah pilihan yang baik karena ini adalah standar baru yang didukung secara luas. Ini memberi fleksibilitas yang lebih besar dalam mengelola permintaan dan respons. Selain itu, jika sudah menguasai JavaScript modern, maka akan merasa lebih nyaman dengan Fetch API.
+Di sisi lain, jika bekerja pada proyek yang harus mendukung peramban lama atau menginginkan pendekatan yang lebih sederhana untuk permintaan AJAX, menggunakan jQuery adalah pilihan yang masih sah. Perlu diingat bahwa penggunaan jQuery telah menurun seiring dengan perubahan tren pengembangan web yang lebih modern, sehingga pengembang sering beralih ke Fetch API atau pustaka-pustaka AJAX modern lainnya.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+Jawab:
+Langkah 1: Saya Mengubah Kode Cards Data untuk Mendukung AJAX GET
+- Saya memastikan memiliki model, URL, dan view yang sesuai dengan data yang ingin saya tampilkan dalam kartu (cards data).
+
+Langkah 2: Saya Melakukan Pengambilan Data Task Menggunakan AJAX GET
+- Saya menambahkan JavaScript code untuk mengambil data task dengan metode GET menggunakan Fetch API atau XMLHttpRequest.
+- Saya memastikan memiliki elemen HTML di halaman saya untuk menampilkan data, seperti sebuah div atau tabel yang akan diisi dengan data yang saya terima melalui AJAX.
+
+Contoh dengan Fetch API:
+```javascript
+// Mengambil data task dengan Fetch API
+fetch("{% url 'main:get_tasks' %}")
+    .then(response => response.json())
+    .then(data => {
+        // Saya memanipulasi data dan menampilkannya dalam elemen HTML yang sesuai
+    })
+    .catch(error => {
+        console.error("Error fetching tasks: " + error);
+    });
+```
+
+Langkah 3: Saya Membuat Tombol untuk Membuka Modal Tambah Item
+- Saya menambahkan tombol pada halaman saya yang akan membuka modal dengan formulir untuk menambahkan item.
+- Saya dapat menggunakan modal Bootstrap atau membuat modal kustom dengan HTML, CSS, dan JavaScript.
+
+Langkah 4: Saya Membuat Fungsi View Baru untuk Menambahkan Item Baru
+- Saya membuat view baru di Django yang akan menangani permintaan POST untuk menambahkan item baru ke dalam basis data. Saya memastikan untuk memproses data yang dikirim dari formulir.
+
+Langkah 5: Saya Membuat Path /create-ajax/ yang Mengarah ke Fungsi View
+- Dalam berkas `urls.py`, saya menambahkan path yang akan mengarahkan ke view yang saya buat pada langkah sebelumnya.
+
+Langkah 6: Saya Menghubungkan Form Modal ke Path /create-ajax/
+- Saya memastikan formulir modal saya mengirimkan permintaan POST ke path `/create-ajax/` saat dikirim.
+
+Langkah 7: Saya Mereset Halaman Utama secara Asinkron untuk Menampilkan Daftar Item Terbaru
+- Setelah menambahkan item baru dengan sukses, saya melakukan pembaruan asinkron pada daftar item di halaman utama dengan menggunakan AJAX GET (seperti yang dijelaskan dalam Langkah 2).
+
+Contoh dengan Fetch API:
+```javascript
+// Setelah menambahkan item, saya memperbarui daftar item dengan Fetch API
+fetch("{% url 'main:get_tasks' %}")
+    .then(response => response.json())
+    .then(data => {
+        // Saya memperbarui tampilan daftar item dengan data yang baru
+    })
+    .catch(error => {
+        console.error("Error updating tasks: " + error);
+    });
+```
+
+Langkah 8: Saya Melakukan Perintah Collectstatic
+- Untuk menjalankan perintah `collectstatic`, saya membuka terminal saya dan menjalankan perintah berikut:
+```
+python manage.py collectstatic
+```
+Ini akan mengumpulkan semua file static dari setiap aplikasi saya ke dalam folder yang dapat diakses secara publik. Saya memastikan memiliki file-file CSS, JavaScript, dan aset lain yang diperlukan dalam direktori yang sesuai.
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
 ##Tugas 5
 
 Jawab:
