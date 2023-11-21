@@ -1,4 +1,5 @@
 from ipaddress import summarize_address_range
+import json
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from main.forms import ProductForm
@@ -165,3 +166,24 @@ def add_product_ajax(request):
     
     return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=405)
 
+
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        new_product = Item.objects.create(
+            user = request.user,
+            name = data["name"],
+            category = data["category"],
+            price = int(data["price"]),
+            amount = int(data["amount"]),
+            description = data["description"]
+        )
+
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
