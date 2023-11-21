@@ -296,7 +296,10 @@
         function closePopupForm() {
             document.getElementById("close").style.display = "none";
         }
-        refreshProducts()
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            refreshProducts();
+        });
     </script>
 
 
